@@ -1,0 +1,53 @@
+"""
+1
+Игра камень ножницы бумага
+Пример:
+Пишешь бумага, программа случайным образом выбирает себе роль и выводится
+проиграл ты или нет 
+"""
+
+import random
+
+igra = ['камень','ножницы','бумага']
+while True:
+    print ('Меню\n1.Показать все ресурсы\n2.Выберите предложенные элемент')
+    menu_choose = int(input('выберите пункт меню:'))
+    if menu_choose > 3 or menu_choose < 1:
+        print ('ошибка')
+
+    elif menu_choose == 1:
+        
+        polnoe = ''
+        for i in range(len(igra)):
+            polnoe = polnoe + igra[i]+ ' '
+            
+        print(polnoe)
+     
+    elif menu_choose == 2:
+        
+        polsovatel = input('Выберите из предложенного: ')
+        igra = ['камень','ножницы','бумага'] 
+        computer = random.choice(igra)
+        print('Бот выбрал:', computer)
+        polsovatel = polsovatel.lower()	
+        if polsovatel == 'камень' and computer == 'бумага':
+            print('проигрыш')
+        if polsovatel == 'камень' and computer == 'ножницы':
+            print('Выигрыш')
+        if polsovatel == 'камень' and computer == 'камень':
+            print('ничья')
+            
+        if polsovatel == 'бумага' and computer == 'бумага':
+            print('ничья')
+        if polsovatel == 'бумага' and computer == 'ножницы':
+            print('проигрыш')
+        if polsovatel == 'бумага' and computer == 'камень':
+            print('выигрыш')
+            
+        if polsovatel == 'ножницы' and computer == 'бумага':
+            print('выигрыш')
+        if polsovatel == 'ножницы' and computer == 'ножницы':
+            print('ничья')
+        if polsovatel == 'ножницы' and computer == 'камень':
+            print('проигрыш')
+

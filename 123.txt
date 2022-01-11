@@ -1,0 +1,82 @@
+from tkinter import *
+from tkinter.ttk import Combobox
+
+#создание функции
+def clicked():
+
+    int1 = int(txt1.get())
+    int2 = int(txt2.get())
+    #чищение поля textv
+    textv.delete(1.0,END)
+    #получить переменную в окошечке
+
+    x = combo.get()
+    if x == '-':
+
+        textv.insert(1.0, int1-int2)
+    if x == '+':
+        textv.insert(1.0, int1+int2)
+        
+    if x == '*':
+        textv.insert(1.0, int1*int2)
+        
+    if x == '/':
+        textv.insert(1.0, int1/int2)
+    
+#создает окно пустое
+window = Tk()
+#название окна
+window.title("калькулятор")
+#размер
+window.geometry("500x350")
+#label для создания текстовых меток. пробелами отмечаем пустое место
+lbl = Label(window, text="               ")
+#grid сетка строка-столбец
+lbl.grid(column = 0, row = 0)
+# font для размера шрифта
+lbl = Label(window, text="Число 1", font=("Arial Bold", 15))
+lbl.grid(column = 1, row = 1)
+
+lbl = Label(window, text="                  ")
+lbl.grid(column = 2, row = 0)
+
+lbl = Label(window, text="Число 2", font=("Arial Bold", 15))
+lbl.grid(column = 3, row = 1)
+
+lbl = Label(window, text="                  ")
+lbl.grid(column = 2, row = 3)
+
+#кнопка и цветовая гамма
+btn = Button(window, text="Посчитать!", bg = 'pink', fg = "black", command=clicked)  
+btn.grid(column = 2, row = 4)
+
+#создание поля ввода width-ширина поля ввода
+txt1 = Entry(window,width=10)  
+txt1.grid(column = 1, row = 2)
+
+txt2 = Entry(window,width=10)  
+txt2.grid(column = 3, row = 2)
+
+lbl = Label(window, text="                  ")
+lbl.grid(column = 2, row = 5)
+
+lbl = Label(window, text="Результат", font=("Arial Bold", 15))
+lbl.grid(column = 2, row = 6)
+
+
+textv = Text(width=15, height=1)
+textv.grid(column = 2, row = 7)
+
+#добавление выбора функции (умн,слож и тд)
+combo = Combobox(window, width=1, font=("Arial Bold", 15))  
+combo['values'] = ('+', '-', '/', '*')
+# автоматически выбран пункт 
+combo.current(1)  
+combo.grid(column = 2, row = 2)
+
+window.mainloop()
+
+
+
+
+
